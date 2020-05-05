@@ -1,36 +1,38 @@
 <html>
-<head>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="main.css" media="screen">
-  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-<head>
-<body>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <head>
+  <body>
+    <div id="main"></div>
+    <div class="sticky">
+      <div class="info">
+        <h3>対応</h3>
+        <ul>
+          <li>たくさんの星</li>
+          <li>太陽</li>
+          <li>地球</li>
+          <li>隕石</li>
+          <li>...etc</li>
+        </ul>
+        <h3>Recordings</h3>
+        <ul id="recordingslist"></ul>
+      </div>
+      <button onclick="resetSpaces()">リセット</button>
+      <button onclick="start()">
+        <i class="fas fa-microphone-alt"></i> 創造
+      </button>
+      <button onclick="allSpaces()">
+        盛り盛り
+      </button>
+    </div>
 
-<div id="main"></div>
-<div class="sticky">
-  <div class="info">
-    <h3>対応</h3>
-    <ul>
-      <li>太陽</li>
-      <li>地球</li>
-      <li>...etc</li>
-    </ul>
-    <h3>Recordings</h3>
-    <ul id="recordingslist"></ul>
-  </div>
-  <button onclick="resetSpaces()">リセット</button>
-  <button onclick="start()">
-    <i class="fas fa-microphone-alt"></i> 創造
-  </button>
-  <button onclick="allSpaces()">
-    盛り盛り
-  </button>
-</div>
-
-<script src="https://typpo.github.io/spacekit/src/lib/three.r98.min.js"></script>
-<script src="https://typpo.github.io/spacekit/src/lib/TrackballControls.js"></script>
-<script src="https://typpo.github.io/spacekit/build/spacekit.js"></script>
-<script src="main.js"></script>
-</body>
+    <script src="https://typpo.github.io/spacekit/src/lib/three.r98.min.js"></script>
+    <script src="https://typpo.github.io/spacekit/src/lib/TrackballControls.js"></script>
+    <script src="https://typpo.github.io/spacekit/build/spacekit.js"></script>
+    <script src="perseids.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
