@@ -12,7 +12,7 @@ let allSpaceList = [
 ];
 
 const viz = new Spacekit.Simulation(document.getElementById('main'), {
-  basePath: '.',
+  basePath: 'https://typpo.github.io/spacekit/src',
 });
 
 SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
