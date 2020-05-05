@@ -15,9 +15,12 @@
     <h3>Recordings</h3>
     <ul id="recordingslist"></ul>
   </div>
-  <button>リセット</button>
-  <button onclick="start(this)">
+  <button onclick="resetSpaces()">リセット</button>
+  <button onclick="start()">
     <i class="fas fa-microphone-alt"></i> 創造
+  </button>
+  <button onclick="allSpaces()">
+    盛り盛り
   </button>
   <!-- <button onclick="stopRecording(this)" disabled>
     <i class="far fa-stop-circle"></i> 休憩
@@ -25,7 +28,6 @@
 </div>
 
 <script src="spacekit.js"></script>
-<script src="recorder.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

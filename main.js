@@ -1,8 +1,22 @@
-function __log(e, data) {
-  log.innerHTML += "\n" + e + " " + (data || '');
-}
+let allSpaceList = [
+  { key: 'たくさんの星', value: '',  presets: null, enabled: false, },
+  { key: '太陽', value: 'sun',  presets: Spacekit.SpaceObjectPresets.SUN, enabled: false, },
+  { key: '水星', value: 'mercury',  presets: Spacekit.SpaceObjectPresets.MERCURY, enabled: false, },
+  { key: '金星', value: 'venus',  presets: Spacekit.SpaceObjectPresets.VENUS, enabled: false, },
+  { key: '地球', value: 'earth',  presets: Spacekit.SpaceObjectPresets.EARTH, enabled: false, },
+  { key: '火星', value: 'mars',  presets: Spacekit.SpaceObjectPresets.MARS, enabled: false, },
+  { key: '木星', value: 'jupiter',  presets: Spacekit.SpaceObjectPresets.JUPITER, enabled: false, },
+  { key: '土星', value: 'saturn',  presets: Spacekit.SpaceObjectPresets.SATURN, enabled: false, },
+  { key: '天王星', value: 'uranus',  presets: Spacekit.SpaceObjectPresets.URANUS, enabled: false, },
+  { key: '海王星', value: 'neptune',  presets: Spacekit.SpaceObjectPresets.NEPTUNE, enabled: false, },
+];
+
+const viz = new Spacekit.Simulation(document.getElementById('main'), {
+  basePath: '.',
+});
 
 SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+
 const recognition = new SpeechRecognition();
 recognition.onresult = (event) => {
   const text = event.results[0][0].transcript
@@ -10,6 +24,14 @@ recognition.onresult = (event) => {
   li.innerText = text;
   recordingslist.appendChild(li);
   __log('added');
+
+  allSpaceList.map(value => {
+    if (value.key === text) {
+      value.enabled = true;
+    }
+    return value;
+  });
+  createList();
 }
 
 window.onload = function () {
@@ -21,19 +43,29 @@ function start() {
   recognition.start();
 }
 
-const viz = new Spacekit.Simulation(document.getElementById('main'), {
-  basePath: '.',
-});
+function allSpaces() {
+  allSpaceList = allSpaceList.map(value => {
+    value.enabled = true;
+    return value;
+  });
+  createList();
+}
 
-viz.createSkybox(Spacekit.SkyboxPresets.NASA_TYCHO);
+function resetSpaces() {
+  location.reload();
+}
 
-viz.createObject('sun', Spacekit.SpaceObjectPresets.SUN);
+function createList() {
+  allSpaceList.filter(value => value.enabled)
+    .forEach(value => {
+      if (value.key === 'たくさんの星') {
+        viz.createSkybox(Spacekit.SkyboxPresets.NASA_TYCHO);
+      } else {
+        viz.createObject(value.key, value.presets);
+      }
+    });
+}
 
-viz.createObject('mercury', Spacekit.SpaceObjectPresets.MERCURY);
-viz.createObject('venus', Spacekit.SpaceObjectPresets.VENUS);
-viz.createObject('earth', Spacekit.SpaceObjectPresets.EARTH);
-viz.createObject('mars', Spacekit.SpaceObjectPresets.MARS);
-viz.createObject('jupiter', Spacekit.SpaceObjectPresets.JUPITER);
-viz.createObject('saturn', Spacekit.SpaceObjectPresets.SATURN);
-viz.createObject('uranus', Spacekit.SpaceObjectPresets.URANUS);
-viz.createObject('neptune', Spacekit.SpaceObjectPresets.NEPTUNE);
+function __log(e, data) {
+  log.innerHTML += "\n" + e + " " + (data || '');
+}
