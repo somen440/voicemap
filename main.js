@@ -14,6 +14,8 @@ let allSpaceList = [
 
 const viz = new Spacekit.Simulation(document.getElementById('main'), {
   basePath: 'https://typpo.github.io/spacekit/src',
+  jd: 2458454.5,
+  maxNumParticles: 2 ** 16,
 });
 
 SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -53,7 +55,7 @@ function createList() {
   allSpaceList.filter(value => value.enabled)
     .forEach(value => {
       if (value.key === 'たくさんの星') {
-        viz.createSkybox(Spacekit.SkyboxPresets.NASA_TYCHO);
+        viz.createStars();
       } else if (value.key === '隕石') {
         meteor();
       } else {
