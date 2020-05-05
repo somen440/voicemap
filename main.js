@@ -16,14 +16,12 @@ const viz = new Spacekit.Simulation(document.getElementById('main'), {
 });
 
 SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-
 const recognition = new SpeechRecognition();
 recognition.onresult = (event) => {
   const text = event.results[0][0].transcript
   const li = document.createElement('li');
   li.innerText = text;
   recordingslist.appendChild(li);
-  __log('added');
 
   allSpaceList.map(value => {
     if (value.key === text) {
@@ -34,12 +32,7 @@ recognition.onresult = (event) => {
   createList();
 }
 
-window.onload = function () {
-  __log('audio setup');
-};
-
 function start() {
-  __log('recording start')
   recognition.start();
 }
 
@@ -64,8 +57,4 @@ function createList() {
         viz.createObject(value.key, value.presets);
       }
     });
-}
-
-function __log(e, data) {
-  log.innerHTML += "\n" + e + " " + (data || '');
 }

@@ -10,8 +10,12 @@
 <div id="main"></div>
 <div class="sticky">
   <div class="info">
-    <h3>Log</h3>
-    <pre id="log"></pre>
+    <h3>対応</h3>
+    <ul>
+      <li>太陽</li>
+      <li>地球</li>
+      <li>...etc</li>
+    </ul>
     <h3>Recordings</h3>
     <ul id="recordingslist"></ul>
   </div>
@@ -22,12 +26,11 @@
   <button onclick="allSpaces()">
     盛り盛り
   </button>
-  <!-- <button onclick="stopRecording(this)" disabled>
-    <i class="far fa-stop-circle"></i> 休憩
-  </button> -->
 </div>
 
-<script src="spacekit.js"></script>
+<script src="https://typpo.github.io/spacekit/src/lib/three.r98.min.js"></script>
+<script src="https://typpo.github.io/spacekit/src/lib/TrackballControls.js"></script>
+<script src="https://typpo.github.io/spacekit/build/spacekit.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
